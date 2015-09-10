@@ -1,22 +1,35 @@
 void setup()
 {
-	size(300,300);
+	size(300,350);
 	noLoop();
 }
 void draw()
 {
+	
+
+int sum = 0;
 	background((int)(Math.random()*100+155),(int)(Math.random()*100+155),(int)(Math.random()*100+155));
 
 	for(int x = 0; x <= 250; x = x+ 50)
+	{
 	for(int y = 0; y <= 250; y = y + 50)
 	{
 		Die theDie = new Die(x,y);
 	
 		theDie.show();
-			theDie.roll();
+		theDie.roll();
+			sum = sum + theDie.value;
 	}
-}
 	
+}
+strokeWeight(3);
+textSize(45);
+	
+
+	text("Total: " + sum, 45,340);
+	
+}
+
 void mousePressed()
 {
 	redraw();
@@ -94,5 +107,6 @@ class Die //models one single dice cube
 	{
 	fill((int)(Math.random()*55+200));
 	rect(myX,myY,50,50,10);
+	
 	}
 }
